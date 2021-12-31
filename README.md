@@ -1,7 +1,7 @@
 # V2Ray4Fly.io
 
 ## 概述
-通过 GitHub Actions 自动在 [Fly.io](https://fly.io/) 上部署 [V2Ray](https://www.v2fly.org/)
+通过 GitHub Actions 自动在 [Fly.io](https://fly.io/) 上部署 [V2Ray](https://www.v2fly.org/)测试
 
 ## 配置部署
 1. 先到 [Fly.io](https://fly.io/) 注册账号
