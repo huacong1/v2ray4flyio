@@ -263,13 +263,13 @@
 23. 下载erpnext
 
     ```
-    bench get-app --branch version-13 erpnext https://gitee.com/qinyanwan/erpnext
+    bench get-app --branch version-13 erpnext https://gitee.com/phipsoft/frappe
     ```
 
     下载指定版本，将上面的version-13改为仓库中的标签名称，如v13.15.1：
 
     ```
-    bench get-app --branch v13.15.1 erpnext https://gitee.com/qinyanwan/erpnext
+    bench get-app --branch v13.15.1 erpnext https://gitee.com/phipsoft/frappe
     ```
 
     
