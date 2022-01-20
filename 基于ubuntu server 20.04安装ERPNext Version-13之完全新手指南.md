@@ -8,17 +8,17 @@
    sudo passwd root
    ```
 
-3. 添加用户（虚拟机、物理机、腾讯云可以略过这一步，其中虚拟机和物理机可以使用安装系统时建的用户，腾讯云可以用ubuntu用户 ，阿里云需要做这一步）
+3. 添加用户（虚拟机、物理机、腾讯云可以略过这一步，其中虚拟机和物理机可以使用安装系统时建的用户，腾讯云可以用ubuntu用户 ，阿里云需要做这一步）01
 
    ```markdown
-   adduser USERNAME
+   adduser frappe
    #用户名USERNAME换成自己计划使用的用户名
    ```
 
 4. 将用户设置sudo权限：（如跳过第3步则这步也可以跳过）
 
    ```markdown
-   usermod -aG sudo USERNAME
+   usermod -aG sudo frappe
    #记得把命令行里的USERNAME改成自己刚设置的用户名
    ```
 
@@ -102,13 +102,13 @@
 
    
 
-8. 更新并重启
+8. 更新并重启  02
 
    ```markdown
    apt update && apt upgrade -y && shutdown -r now
    ```
 
-9. 下载node.js
+9. 下载node.js     03
 
    ```markdown
    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -116,13 +116,13 @@
    ## Installing the NodeSource Node.js 12.x repo...
    ```
 
-10. 安装操作系统级依赖
+10. 安装操作系统级依赖     04
 
    ```markdown
    apt install -y nodejs mariadb-server-10.3 redis-server python3-pip nginx python3-testresources git libffi-dev python3-dev libssl-dev gcc g++ make
    ```
 
-11. 用nano编辑my.cnf文件
+11. 用nano编辑my.cnf文件   05
 
    ```markdown
    nano /etc/mysql/my.cnf
@@ -140,13 +140,13 @@
    default-character-set = utf8mb4
    ```
 
-12. 重启sql
+12. 重启sql    06
 
    ```markdown
    service mysql restart
    ```
 
-13. mysql的安全配置
+13. mysql的安全配置   07
 
    ```markdown
    mysql_secure_installation
@@ -166,7 +166,7 @@
    Reload privilege tables now? [Y/n] Y
    ```
 
-14. 输入上面新设置的数据库root账号密码，进入数据库命令行，并执行下面的语句
+14. 输入上面新设置的数据库root账号密码，进入数据库命令行，并执行下面的语句     08
 
     ```markdown
     mysql -u root -p
@@ -179,7 +179,7 @@
 
 15. ### 【重要】关闭ssh终端，重新以自己“新创建的用户名”和密码登录（参考第3、4步，如果没有新建的用户，则用安装系统时的用户进行登录，如阿里云才需要用第3、4步建好的用户来登录）
 
-16. 安装yarn
+16. 安装yarn    09
 
     ```markdown
     sudo npm install -g yarn
@@ -199,22 +199,22 @@
     npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
     
     ```
-
-17. 查看版本，对照一下，这一步不做也行
+  
+17. 查看版本，对照一下，这一步不做也行    010
 
     ```markdown
     node -v && npm -v && python3 -V && pip3 -V && yarn -v
     ```
 
-18. 安装bench，即erpnext系统的命令行管理工具，类似windows系统的程序管理器。
+18. 安装bench，即erpnext系统的命令行管理工具，类似windows系统的程序管理器。    011
 
     ```markdown
-    sudo -H pip3 install frappe-bench==5.6.0
+    sudo pip3 install frappe-bench
     #2021-11-13加多一个 -H 未验证
     #-H 将环境变数中的 HOME （家目录）指定为要变更身份的使用者家目录（如不加 -u 参数就是系统管理者 root ）
     ```
 
-19. 安装git，下一步bench init可能会报错缺少git。
+19. 安装git，下一步bench init可能会报错缺少git。    012
 
     ```markdown
     sudo apt install git
@@ -223,7 +223,7 @@
 20. 使用bench命令安装frappe框架，记得把frappe-bench（下方的version-13后面的名字）改成自己想要的名字，这一步时间比较长，别着急，代码库已经加了码云地址参数。如果网络超时失败，可重新运行该命令，重新运行之前需使用命令 `rm -r frappe-bench` 删除之前生成的目录。
 
     ```markdown
-    bench init --frappe-branch version-13 frappe-bench --frappe-path=https://gitee.com/qinyanwan/frappe
+    bench init --frappe-branch version-13 frappe-bench --frappe-path=https://gitee.com/phipsoft/frappe
     ```
 
     ```markdown
